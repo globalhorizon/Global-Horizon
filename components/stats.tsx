@@ -13,22 +13,22 @@ export default function Stats() {
   const stats = [
     {
       icon: <GlobeIcon className="h-8 w-8" />,
-      value: "25+",
+      value: "10",
       label: "Countries Served",
     },
     {
       icon: <UsersIcon className="h-8 w-8" />,
-      value: "500+",
+      value: "50+",
       label: "Happy Clients",
     },
     {
       icon: <BuildingIcon className="h-8 w-8" />,
-      value: "100+",
+      value: "50+",
       label: "Partner Companies",
     },
     {
       icon: <TruckIcon className="h-8 w-8" />,
-      value: "1000+",
+      value: "100+",
       label: "Shipments Completed",
     },
   ]

@@ -33,7 +33,7 @@ export default function WhatsAppButton() {
 
   const handleWhatsAppClick = () => {
     // Phone number from the content
-    const phoneNumber = "917041255360"
+    const phoneNumber = "919998973164"
     const message = "Hello, I'm interested in your international trade services. How can you help me?"
 
     // Create WhatsApp URL with phone and encoded message

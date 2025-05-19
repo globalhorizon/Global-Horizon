@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, Package2 } from "lucide-react"
+import Image from "next/image"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -36,7 +37,7 @@ export default function Navbar() {
     { name: "Contact", href: "#contact" },
   ]
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     setIsMenuOpen(false)
     const element = document.getElementById(sectionId.replace("#", ""))
     if (element) {
@@ -52,9 +53,23 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center z-10">
-          <Package2 className={`h-8 w-8 mr-2 ${scrolled ? "text-primary" : "text-white"}`} />
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative h-12 w-auto"
+          >
+            <Image
+              src="logo.jpeg"
+              alt="Global Horizon Logo"
+              width={180}
+              height={48}
+              className="h-full w-auto object-contain rounded-lg"
+              priority
+            />
+          </motion.div>
           <motion.span
-            className={`text-xl font-bold ${scrolled ? "text-primary" : "text-white"}`}
+            className={`text-xl ml-3 font-bold ${scrolled ? "text-primary" : "text-white"}`}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}

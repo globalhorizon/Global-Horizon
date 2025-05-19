@@ -1,7 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { Package2, ArrowUp } from "lucide-react"
+import Image from "next/image"
+import { ArrowUp } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -16,10 +18,24 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <Link href="/" className="flex items-center mb-4">
-              <Package2 className="h-8 w-8 mr-2" />
-              <span className="text-xl font-bold">Global Horizon</span>
-            </Link>
+            <Link href="/" className="flex items-center z-10">
+                        <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="relative h-12 w-auto"
+                        >
+                        <Image
+                          src="logo.jpeg"
+                          alt="Global Horizon Logo"
+                          width={180}
+                          height={48}
+                          className="h-full w-auto object-contain rounded-lg"
+                          priority
+                        />
+                        </motion.div>
+                      <span className="text-xl ml-3 font-bold">Global Horizon</span>
+                    </Link>
             <p className="text-gray-400 mb-4">
               Your gateway to global trade. We specialize in connecting businesses with international markets.
             </p>
@@ -109,7 +125,7 @@ export default function Footer() {
               Rajkot – 360 007, Gujarat – India.
               <br />
               <br />
-              <strong>Phone:</strong> +91 70412 55360
+              <strong>Phone:</strong> +91 9998973164, +91 7041255360
               <br />
               <strong>Email:</strong> amwi1213@gmail.com
             </address>

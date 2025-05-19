@@ -60,12 +60,12 @@ export default function Products() {
     {
       name: "Electrical Items & Electronics",
       icon: <Lightbulb className="h-10 w-10" />,
-      image: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=200&h=200&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1534659477036-c05235c62402?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Changed to bulb image
     },
     {
       name: "Kitchenware",
       icon: <Utensils className="h-10 w-10" />,
-      image: "https://images.unsplash.com/photo-1556909114-44e3e9699e2b?q=80&w=200&h=200&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?q=80&w=200&h=200&auto=format&fit=crop", // Updated kitchenware image
     },
     {
       name: "Office & Stationery Products",

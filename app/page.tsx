@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import Services from "@/components/services"
@@ -9,9 +8,8 @@ import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 import Stats from "@/components/stats"
 import Testimonials from "@/components/testimonials"
-import Partners from "@/components/partners"
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Global Horizon - Your Gateway to International Trade",
   description:
     "We offer practical services, training and consultancy, to support your business with all aspects of international trade.",
@@ -27,7 +25,6 @@ export default function Home() {
       <Products />
       <Testimonials />
       <Certifications />
-      {/* <Partners /> */}
       <Contact />
       <Footer />
       <WhatsAppButton />

@@ -26,8 +26,10 @@ export default function Certifications() {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=240&h=160&auto=format&fit=crop",
     },
     {
-      name: "Trusted Partner",
-      image: "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=240&h=160&auto=format&fit=crop",
+      name: "Registration",
+      image: "/certificate-preview.png", // PDF preview image
+      type: "pdf",
+      pdfPath: "/registration.pdf",
     },
   ]
 
@@ -42,7 +44,9 @@ export default function Certifications() {
     },
     {
       name: "Export Council",
-      image: "https://images.unsplash.com/photo-1618044733300-9472054094ee?q=80&w=240&h=160&auto=format&fit=crop",
+      image: "/membership-preview.png", // PDF preview image
+      type: "pdf",
+      pdfPath: "/FIEO RCMC CERTIFICATE.pdf",
     },
     {
       name: "Industry Alliance",
@@ -78,61 +82,91 @@ export default function Certifications() {
         />
 
         <div className="grid md:grid-cols-2 gap-12" ref={ref}>
+          {/* Certificates Section */}
           <motion.div variants={containerVariants} initial="hidden" animate={inView ? "visible" : "hidden"}>
             <h3 className="text-2xl font-bold mb-6 flex items-center">
               <BadgeCheck className="h-6 w-6 mr-2 text-primary" />
               Certificates
             </h3>
             <div className="grid grid-cols-2 gap-6">
-              {certificates.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
-                  variants={itemVariants}
-                >
-                  <div className="relative h-40 mb-4 overflow-hidden rounded-md">
-                    <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                  </div>
-                  <p className="text-center font-medium group-hover:text-primary transition-colors duration-300">
-                    {item.name}
-                  </p>
-                </motion.div>
-              ))}
+              {certificates.map((item, index) => {
+                const content = (
+                  <motion.div
+                    className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
+                    variants={itemVariants}
+                  >
+                    <div className="relative h-40 mb-4 overflow-hidden rounded-md">
+                      <Image
+                        src={item.image || "/placeholder.svg"}
+                        alt={item.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    </div>
+                    <p className="text-center font-medium group-hover:text-primary transition-colors duration-300">
+                      {item.name}
+                    </p>
+                  </motion.div>
+                )
+
+                return item.type === "pdf" ? (
+                  <a
+                    key={index}
+                    href={item.pdfPath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div key={index}>{content}</div>
+                )
+              })}
             </div>
           </motion.div>
 
+          {/* Memberships Section */}
           <motion.div variants={containerVariants} initial="hidden" animate={inView ? "visible" : "hidden"}>
             <h3 className="text-2xl font-bold mb-6 flex items-center">
               <Award className="h-6 w-6 mr-2 text-primary" />
               Memberships
             </h3>
             <div className="grid grid-cols-2 gap-6">
-              {memberships.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
-                  variants={itemVariants}
-                >
-                  <div className="relative h-40 mb-4 overflow-hidden rounded-md">
-                    <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                  </div>
-                  <p className="text-center font-medium group-hover:text-primary transition-colors duration-300">
-                    {item.name}
-                  </p>
-                </motion.div>
-              ))}
+              {memberships.map((item, index) => {
+                const content = (
+                  <motion.div
+                    className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
+                    variants={itemVariants}
+                  >
+                    <div className="relative h-40 mb-4 overflow-hidden rounded-md">
+                      <Image
+                        src={item.image || "/placeholder.svg"}
+                        alt={item.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    </div>
+                    <p className="text-center font-medium group-hover:text-primary transition-colors duration-300">
+                      {item.name}
+                    </p>
+                  </motion.div>
+                )
+
+                return item.type === "pdf" ? (
+                  <a
+                    key={index}
+                    href={item.pdfPath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div key={index}>{content}</div>
+                )
+              })}
             </div>
           </motion.div>
         </div>

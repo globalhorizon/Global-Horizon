@@ -13,6 +13,9 @@ import { MapPin, Phone, Mail, MessageSquare, Instagram, Facebook, Linkedin } fro
 import { toast } from "@/components/ui/use-toast"
 import { SectionHeading } from "@/components/ui/section-heading"
 
+// Google Apps Script Web App URL - Replace with your actual URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyai0BcpnUX4Iu4gfY6T-DwlrZd2QEI5HBxCeQ5LXHI_vYB6TrWODZtOdOBFUuK9-f6/exec"
+
 export default function Contact() {
   const [formRef, formInView] = useInView({
     triggerOnce: true,
@@ -52,13 +55,26 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
+      })
+
+      // Since we're using no-cors, we can't check the response status
+      // But we can assume it worked if no error was thrown
       toast({
         title: "Enquiry Submitted",
         description: "Thank you for contacting Global Horizon. We will revert you soon within 24 Hrs in working days.",
       })
+
       // Reset form
       setFormData({
         organization: "",
@@ -72,7 +88,15 @@ export default function Contact() {
         units: "",
         exportingCountry: "",
       })
-    }, 1500)
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an error sending your enquiry. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const productCategories = [
