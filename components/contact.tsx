@@ -14,7 +14,7 @@ import { toast } from "@/components/ui/use-toast"
 import { SectionHeading } from "@/components/ui/section-heading"
 
 // Google Apps Script Web App URL - Replace with your actual URL
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBYhOcWOJQFjAdbv202RwBjmLtpEiI8OeR63o53XHuXMyoYnth7uyNLy-ifxHlhM75aQ/exec"
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNSxrNW6mkkgl31z6R5KF4fRd7FFqT7sH3tcgNZizrxA8VdcnKe9rZ_8Pij1q86I1wWg/exec"
 
 export default function Contact() {
   const [formRef, formInView] = useInView({
